@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Lesson 2 - this demo</title>
+    </head>
+    <body>
+        <h1>Lesson 2 - this</h1>
+        <div id="demo">dummy text lalalalala</div>
+        <button id="btn">My Dummy Button</button>
+        <script>
+            console.log("Hello Lesson 2");
+
+            // class from PPT
+            class Header {
+                constructor() {
+                    this.color = "Red";
+                }
+
+                //Regular function:
+                //changeColor = function() {
+                // next slide. using arrow function . copy from PPT
+                changeColor = () => {
+                    document.getElementById("demo").innerHTML += 
+                        this.color;
+                }
+            }
+
+            // create the objects and test it. copy from PPT
+            myheader = new Header();
+
+            //The window object calls the function:
+            window.addEventListener("load", myheader.changeColor);
+
+            //A button object calls the function:
+            document.getElementById("btn").addEventListener(
+                "click", myheader.changeColor);
+
+            // simple demo of let vs var
+            for(var i = 0; i<10; i++){
+                console.log(i);
+            }
+            // var works here
+            console.log("var i = " + i);
+            
+            for(let k = 0; k<10; k++){
+                console.log(k);
+            }
+            // let variable doesn't work here
+            console.log("let k = " + k);
+        </script>
+    </body>
+</html>
