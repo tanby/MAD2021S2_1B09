@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>Lesson 2 - event listener demo</title>
+    </head>
+    <body>
+        <h1>Lesson 2 - event listener</h1>
+        <div id="demo">dummy text lalalalala</div>
+        <!-- drop down menu -->
+        <select id="choice">
+            <option value="one">1</option>
+            <option value="two">2</option>
+            <option value="three">3</option>
+        </select>
+        <button id="btn">My Dummy Button</button>
+        <script>
+            console.log("Hello Lesson 2 - event listener");
+            // create function as listener
+            // mylistener = () =>{ // - use arrow function, write function directly in listener
+            //         console.log("value changed: " + 
+            //             document.getElementById("choice").value);
+            //     }
+            // 3rd way to solve this
+            mylistener = (evt) =>{ // - use arrow function, write function directly in listener
+                    console.log("value changed: " + 
+                        evt.target.value); // evt.target = DOM element that trigger this event
+                }
+            // add event listener
+            document.getElementById("choice").addEventListener(
+                "change", 
+                mylistener
+            )
+            
+        </script>
+    </body>
+</html>
