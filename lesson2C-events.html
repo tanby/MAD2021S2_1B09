@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Hello 1B09</title>
+    </head>
+    <body>
+        <h1>Hello 1B09 - let's try events</h1>
+        <!-- 1st step create UI -->
+        <!-- 3rd step add listener to onclick -->
+        <button onclick="listener()">Button 1</button>
+        <button id="b2">Button 2</button>
+        <button id="b3">Button 3</button>
+        <script>
+            console.log("hello event demo started");
+
+            // step 2 - write listener, just a function
+            function listener(){
+                console.log("button 1 clicked!");
+            }
+
+            // 2nd way of writing event listener
+            // choice: use function, arrow function, named var
+            function listen2(){
+                console.log("button 2 clicked!");
+            }
+            // add listener to button here
+            // NOTE: no brackets for the function
+            // assign listen2 to onclick
+            document.getElementById("b2").onclick = listen2;
+
+            // 3rd way to write event listener
+            function listen3(){
+                console.log("button 3 clicked!");
+            }
+            // add listener to button
+            document.getElementById("b3").addEventListener(
+                "click", // what event to listen to
+                listen3
+            );
+        </script>
+    </body>
+</html>
