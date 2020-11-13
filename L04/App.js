@@ -6,39 +6,41 @@
  * @flow
  */
 // from the PPT slide
-import React, {Component} from 'react';
+// add useState to import for use with function
+import React, {Component, useState} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 
-export default class App extends React.Component {
+// write component using function method
+const App = () => {
   // demo state
-  state = {
-    example: 100
-  }
+  const [example, setExample] = useState(100);
+  
   // render UI
-  render(){
-    // use JSX
-    return (
-      <View>
-        <Text>Hello 1B09, this is {this.state.example}</Text>
-        <ABC dit="1b09" />
-        <ABC dit="3b99" />
-      </View>
-    );
-  }
+  // use JSX
+  // to use example, no need to use this.
+  return (
+    <View>
+      <Text>Hello 1B09, this is {example}</Text>
+      <ABC dit="1b09" />
+      <ABC dit="2b89" />
+    </View>
+  );
 }
 
+export default App;
+
 // create a separate Component to be reused
-class ABC extends React.Component {
+const ABC = (props) => {
   // render UI
   // demo props
-  render(props){
-    // use JSX
-    return (
-      <View>
-        <Text>this is property</Text>
-        <Text>{this.props.dit}</Text>
-      </View>
-    );
-  }
+  // use JSX
+  // to use props, no need to use this.
+  return (
+    <View>
+      <Text>this is property</Text>
+      <Text>{props.dit}</Text>
+    </View>
+  );
+  
 }
 export {ABC};
