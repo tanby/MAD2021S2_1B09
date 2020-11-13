@@ -37,10 +37,25 @@ const ABC = (props) => {
   // to use props, no need to use this.
   return (
     <View>
-      <Text>this is property</Text>
-      <Text>{props.dit}</Text>
+      <Text style={friday.bigtext}>this is property</Text>
+      <Text style={friday.content}>{props.dit}</Text>
     </View>
   );
   
 }
 export {ABC};
+
+// add stylesheet
+const friday = StyleSheet.create(
+  {
+    bigtext:{
+      fontSize: 40
+    },
+    content: {
+      backgroundColor: "#990033",
+      fontSize: 24,
+      padding: 16, 
+      color: "white"
+    }
+  }
+);
