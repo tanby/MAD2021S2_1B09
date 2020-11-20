@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title>Task 1</title>
+    </head>
+    <body>
+        <h1>Diploma course</h1>
+        <select id="course" onchange="onABC()">
+            <option value="1">SpDip in Web Dev</option>
+            <option value="2">SpDip in AI</option>
+            <option value="3">SpDip in Media</option>
+        </select>
+        <h2>Module</h2>
+        <div id="result">some results displayed</div>
+        <script>
+            console.log("task 1 started");
+
+            class Course {
+                constructor(dipname) {
+                    this.dip = dipname;
+                }
+
+                taking() {
+                    return 'I am taking ' + this.dip + ' diploma' ;
+                }
+            }
+            class SpDiploma extends Course {
+                constructor(dipname, modname) {
+                    super(dipname);
+                    this.module= modname;
+                }  
+
+                show() {
+                    //return this.taking() + ', the module is ' + this.module
+                    return 'I am taking ' +this.module 
+                        + ' module. it will award ' + this.dip; 
+                }
+            }
+
+            mycourse = new SpDiploma('DIT', 'MAD');
+            mycourse.show();
+
+            // create 3 course objects and store in array
+            let courses = [
+                new SpDiploma('SpDip in Web Dev', 'FED'),
+                new SpDiploma('SpDip in AI', 'Python'),
+                new SpDiploma('SpDip in Media', 'DEUI')
+            ];
+
+            // write event handler for menu changes
+            function onABC(){
+                console.log("menu changed");
+                // get what is selected
+                let menu = document.getElementById("course").value;
+                // get the result div
+                let result = document.getElementById("result");
+                //console.log(menu);
+                // based on selected display result
+                // switch(menu){
+                //     case '1':
+                //         //console.log(courses[0].show());
+                //         result.innerHTML = courses[0].show();
+                //         break;
+                //     case '2':
+                //         //console.log(courses[1].show());
+                //         result.innerHTML = courses[1].show();
+                //         break;
+                //     case '3':
+                //         //console.log(courses[2].show());
+                //         result.innerHTML = courses[2].show();
+                //         break;
+                // }
+                // get the index of the selected item
+                let index = document.getElementById("course").selectedIndex;
+                console.log(index);
+                result.innerHTML = courses[index].show();
+            }
+
+            //document.write(mycourse.show());
+        </script>
+    </body>
+</html>
