@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <head>
+        <title> My Simple Calculator </title>
+    </head>
+
+    <h1>My Simple Calculator</h1>
+
+    <label for="Number1"><b>Number 1:</b></label>
+    <input type="number" id="Number1" name="Number1" value="3">
+    <br><br>
+
+    <label for="Number2"><b>Number 2:</b></label>
+    <input type="number" id="Number2" name="Number2" value="2">
+    <br><br>
+
+    <button type="button" id="Addition" onclick="calculate('plus')">Addition</button>
+    <button type="button" id="Subtraction" onclick="calculate('minus')">Subtraction</button>
+    <br><br>
+    <button type="button" id="Multiplication" onclick="calculate('mul')">Multiplication</button>
+    <button type="button" id="Division" onclick="calculate('div')">Division</button>
+
+    <script>
+        console.log("calc started");
+
+        // write arrow function 
+        calculate = (operation) =>{
+            console.log(operation);
+            // need the values from the user input
+            let n1 = parseFloat(document.getElementById("Number1").value);
+            let n2 = parseFloat(document.getElementById("Number2").value);
+            let result = 0;
+            // perform the operation
+            switch(operation){
+                case 'plus':
+                    result = n1+n2;
+                    break;
+                case 'minus':
+                    result = n1-n2;
+                    break;
+                case 'mul':
+                    result = n1*n2;
+                    break;
+                case 'div':
+                    result = n1/n2;
+                    break;
+            }
+            // show alert dialog with result
+            alert(result);
+        }
+    </script>
+
+</body>
+
+</html>
