@@ -1,0 +1,89 @@
+<html>
+
+    <head>
+        <title>Document</title>
+    </head>
+    
+    <body>
+        <h4>Enter Loan Information:</h4>
+        <label for="Amount">1) Amount of the loan (Principal):</label>
+        <input type="text" id="Amount" name="Amount" value="100000">
+        <br>
+        <br>
+        <label for="InterestPerc">2) Annual percentage rate of interest (in percentage):</label>
+        <input type="text" id="InterestPerc" name="InterestPerc" value="5">
+        <br>
+        <br>
+        <label for="RepayEars">3) Repayment period in years:</label>
+        <input type="text" id="RepayEars" name="RepayEars" value="3">
+        <br>
+        <br>
+        <button id="btn1" onclick="onCompute()">Compute</button>
+        <h4>Payment Information:</h4>
+        <label for="MonthRepay">4) Monthly repayment will be: </label>
+        <input type="text" id="MonthRepay" name="MonthRepay">
+        <br>
+        <br>
+        <label for="TotalPay">5) Total payment will be:</label>
+        <input type="text" id="TotalPay" name="TotalPay">
+        <br>
+        <br>
+        <label for="TotalInt">6) Total interest payments will be:</label>
+        <input type="text" id="TotalInt" name="TotalInt">
+        <p id="demo"></p>
+        <script>
+            console.log("loan working");
+
+            // classes copied from Pract doc
+            class Loan { 
+                constructor(principal,interest,payment) { 
+                    this.principal = principal; // amt borrowed
+                    this.interest = interest; // mthly interest
+                    this.payment = payment; // num of repayment months
+                } 
+             }
+
+            class Repayment extends Loan {
+                // method to calculate monthly interest
+                calcMthlyInterest = () =>{
+                    let x = Math.pow(1+this.interest, this.payment);
+                    let result = this.interest * this.principal * x / (x-1);
+                    return result;
+                }
+            } // logic portion done
+
+            // event handler when button click
+            function onCompute(){
+                console.log("compute started");
+                // get all the user input
+                let r = parseFloat(document.getElementById("InterestPerc").value); // in percent
+                let P = parseFloat(document.getElementById("Amount").value); 
+                let N = parseFloat(document.getElementById("RepayEars").value); // in years
+
+                // ON YOUR OWN: do checking to see if input is number
+
+                r = r / 100 / 12; // convert to monthly interest rate in decimal
+                N = N * 12; // convert to months
+
+                // create Repayment object to do all the calculation for us
+                let repayObj = new Repayment(P, r, N);
+                // monthly interest
+                let m = repayObj.calcMthlyInterest();
+                console.log(m);
+                // total repayment
+                let t = m * N;
+                console.log(t);
+                // total interest
+                let i = t - P;
+                console.log(i);
+
+                // put value into text input
+                document.getElementById("MonthRepay").value = m;
+                // ON YOUR OWN: put the rest of the value in text input
+            }
+
+
+        </script>
+    </body>
+    
+    </html>
