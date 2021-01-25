@@ -9,6 +9,11 @@ import {
 } from "react-native";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 
+// variable to store data
+let data = {};
+let dataArray = [];
+const url = 'https://my_firebase_url.json';
+
 // sample function to convert from object to array
 const processData = (data) => {
     // store everything in array
@@ -41,13 +46,15 @@ const App = () =>{
 
     // add in function to read data
     const fetchData = () => {
-        fetch('https://mapp2019-6d4f1.firebaseio.com/products.json')
+        
+        fetch(url)
         .then((response) => response.json())
         .then((json) => {
             console.log(json); // or store as state or to display
             // process data and store in state
-            setArr( processData(json));
-            setResult(displayString(arr));
+            dataArray = processData(json);
+            setArr( dataArray);
+            setResult(displayString(dataArray));
         })
         .catch((error) => console.error(error))
     }
@@ -63,7 +70,7 @@ const App = () =>{
     // functio to add data to firebase
     const addData = (name, price) =>{
         console.log("adding data");
-        fetch('https://mapp2019-6d4f1.firebaseio.com/products.json', {
+        fetch(url, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -83,8 +90,11 @@ const App = () =>{
         });;
     }; 
 
-    const addbtnpress = () => addData(name, price);
-
+    const addbtnpress = () => {
+        addData(name, price);
+        // fetch data after adding
+        fetchData();
+    }
     // to call fetch data when component is mounted
     useEffect(()=>fetchData(), []);
     
